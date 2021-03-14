@@ -10,22 +10,60 @@
   </head>
 
   <body>
-
-    <header>
-      <nav>
-          <% if user_signed_in? %>
-            <%= link_to("#{current_user.username}さんのページ", "/pages/show") %>
-            <%= link_to 'プロフィール変更', edit_user_registration_path %>
-            <%= link_to("投稿","/posts/new") %>
-            <%# ↓↓↓↓　　リンク先、修正必要　　↓↓↓↓ %>
-            <%= link_to("投稿一覧","/posts/#{current_user.id}") %> 
-            <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
-          <% else %>
-            <%= link_to 'サインアップ', new_user_registration_path %>
-            <%= link_to 'ログイン', new_user_session_path %>
-          <% end %>
+    <header id="header">
+      <nav class="navbar navbar-expand-lg navbar-light py-4 px-5">
+        <a class="navbar-brand" href="#">ブランド名</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav2" aria-controls="navbarNav2" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav2">
+          <ul class="navbar-nav">
+            <% if user_signed_in? %>
+              <%# ユーザーがログインしていると使える機能 %>
+              <li class="nav-item">
+                <button type="button" class="btn btn-orange mx-auto d-block">
+                  <%= link_to("マイページ", "/pages/show") %>
+                </button>
+              </li>
+              <li class="nav-item">
+                <button type="button" class="btn btn-orange mx-auto d-block" id="btn-edit">
+                　　<%= link_to 'プロフィール変更', edit_user_registration_path %>
+                </button>
+              </li>
+              <li class="nav-item">
+                <button type="button" class="btn btn-orange mx-auto d-block" id="btn-post">
+                　　<%= link_to("投稿","/posts/new") %>
+                </button>
+              </li>
+              <li class="nav-item">
+                <button type="button" class="btn btn-orange mx-auto d-block" id="btn-post">
+                    <%# ↓↓↓↓　　リンク先、修正必要　　↓↓↓↓ %>
+                    <%= link_to("投稿一覧","/posts/#{current_user.id}") %> 
+                </button>
+              </li>
+              <li class="nav-item">
+                <button type="button" class="btn btn-orange mx-auto d-block" id="btn-post">
+                　　<%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+                </button>
+              </li>
+            <% else %>
+              <%# セッションがないと使える機能 %>
+              <li class="nav-item active">
+                <button type="button" class="btn btn-orange mx-auto d-block" id="btn-signup">
+                    <%= link_to 'サインアップ', new_user_registration_path %>
+                </button>
+              </li>
+              <li class="nav-item">
+                <button type="button" class="btn btn-orange mx-auto d-block" id="btn-login">
+                    <%= link_to 'ログイン', new_user_session_path %>
+                </button>
+              </li>
+            <% end %>
+          </ul>
+        </div>
       </nav>
-    </header>
+    </header><!-- End Header -->
 
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>

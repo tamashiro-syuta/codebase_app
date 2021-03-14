@@ -1,24 +1,29 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <div class="text-center">
+    <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>User:</strong>
-  <%= @post.user_id %>
-</p>
+    <h2 class="p-3">
+      <strong>ユーザー:</strong>
+      <%= @post.user_id %>
+    </h2>
 
-<p>
-  <strong>Content:</strong>
-  <%= @post.content %>
-</p>
+    <h2 class="p-3">
+      <strong>内容:</strong>
+      <%= @post.content %>
+    </h2>
 
-<div class="image">
-  <% # 投稿の画像をサイズ変更して表示 %>
-  <%= image_tag @post.image.variant(resize:'200x200') %>
+    <div class="image p-3">
+      <% # 投稿の画像をサイズ変更して表示 %>
+      <%= image_tag @post.image.variant(resize:'350x350') %>
+    </div>
+
+    <div class="p-3">
+      <% if @post.user_id == current_user.id %>
+        <%= link_to '編集', edit_post_path(@post) %> |
+        <%= link_to '削除', @post, method: :delete, data: { confirm: '本当に削除してよろしいですか?' } %> |
+      <% end %>
+        <%= link_to '戻る', posts_path %>
+    </div>
+  </div>
 </div>
-
-<%= link_to '編集', edit_post_path(@post) %> |
-<% if @post.user_id == current_user.id %>
-<%= link_to '編集', edit_post_path(@post) %> |
-<%= link_to '削除', @post, method: :delete, data: { confirm: '本当に削除してよろしいですか?' } %> |
-<% end %>
-<%= link_to '戻る', posts_path %>
 
