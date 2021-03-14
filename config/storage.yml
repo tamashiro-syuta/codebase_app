@@ -2,6 +2,7 @@ test:
   service: Disk
   root: <%= Rails.root.join("tmp/storage") %>
 
+# アクティブストレージの保存場所の「local」が具体的にどこか
 local:
   service: Disk
   root: <%= Rails.root.join("storage") %>
