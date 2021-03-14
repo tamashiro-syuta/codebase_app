@@ -1,27 +1,33 @@
-<%= form_with(model: post, local: true) do |form| %>
-  <% if post.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(post.errors.count, "error") %> 投稿できませんでした</h2>
+<div class="container">
+  <div class="text-center p-3">
 
-      <ul>
-        <% post.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+    <%= form_with(model: post, local: true) do |form| %>
+      <% if post.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(post.errors.count, "error") %> 投稿できませんでした</h2>
 
-  <div class="field">
-    <%= form.label :内容 %>
-    <%= form.text_field :content %>
+          <ul>
+            <% post.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="field">
+        <%= form.label :内容 %>
+        <%= form.text_field :content %>
+      </div>
+
+      <div class="field">
+        <%= form.label :画像 %>
+        <%= form.file_field :image %>
+      </div>
+
+      <div class="actions">
+        <%= form.submit %>
+      </div>
+    <% end %>
+
   </div>
-
-  <div class="field">
-    <%= form.label :画像 %>
-    <%= form.file_field :image %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>
