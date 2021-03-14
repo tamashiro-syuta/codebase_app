@@ -66,7 +66,7 @@ class PostsController < ApplicationController
 
     # 受け取るparamsは、contentのみ
     def post_params
-      params.require(:post).permit(:content)
+      params.require(:post).permit(:content, :image)
     end
 
     # private

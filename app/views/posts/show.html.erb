@@ -10,6 +10,11 @@
   <%= @post.content %>
 </p>
 
+<div class="image">
+  <% # 投稿の画像をサイズ変更して表示 %>
+  <%= image_tag @post.image.variant(resize:'200x200') %>
+</div>
+
 <%= link_to '編集', edit_post_path(@post) %> |
 <% if @post.user_id == current_user.id %>
 <%= link_to '編集', edit_post_path(@post) %> |

@@ -55,3 +55,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # user用
 gem 'devise'
+
+# 画像サイズ変更
+gem 'mini_magick'
