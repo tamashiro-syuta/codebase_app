@@ -62,7 +62,7 @@
  .btn-orange {
    background: #f7f4f2;
    color: #f7f4f2;
-   border: #f7f4f2 solid 1px;
+   border: #3e1300 solid 1px;
  }
  
  .btn-orange:hover,
@@ -88,13 +88,12 @@
  .btn-orange.disabled.focus,
  .btn-orange[disabled].focus,
  fieldset[disabled] .btn-orange.focus {
-   background: #e65b20;
+   background: #d1cbc3;
    color: #f7f4f2;
-   border-color: #e65b20;
  }
  
  .btn-orange.outline {
-   border: 5px solid #e65b20;
+   border: 5px solid black;
    color: #e65b20;
  }
  
