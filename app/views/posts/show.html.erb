@@ -14,7 +14,9 @@
 
     <div class="image p-3">
       <% # 投稿の画像をサイズ変更して表示 %>
-      <%= image_tag @post.image.variant(resize:'350x350') %>
+      <% @post.images.each do |image| %>
+        <%= image_tag image.variant(resize: '350x350') %>
+      <% end %>
     </div>
 
     <div class="p-3">

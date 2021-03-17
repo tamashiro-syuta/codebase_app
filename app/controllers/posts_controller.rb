@@ -66,7 +66,7 @@ class PostsController < ApplicationController
 
     # 受け取るparamsは、contentのみ
     def post_params
-      params.require(:post).permit(:content, :image)
+      params.require(:post).permit(:content, images: []) # []をつけることで複数の画像データが入ることができる配列型のデータになる
     end
 
     # private

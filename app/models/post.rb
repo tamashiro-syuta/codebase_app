@@ -4,7 +4,7 @@ class Post < ApplicationRecord
     belongs_to :user
 
     # post は１つの画像をもつ ことのリレーション付け
-    has_one_attached :image # activeStorageではpostテーブルにimageカラムを追加する必要はない
+    has_many_attached :images # activeStorageではpostテーブルにimageカラムを追加する必要はない
 
     validates :user_id, {presence: true}
     validates :content, {presence: true}
