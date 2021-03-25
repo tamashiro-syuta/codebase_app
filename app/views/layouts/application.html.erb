@@ -2,6 +2,8 @@
 <html>
   <head>
     <title>CodebaseApp</title>
+    <%# gem gonを使うため（CSS,JSより先に読み込む） %>
+    <%= include_gon %>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 

@@ -8,4 +8,10 @@ class Post < ApplicationRecord
 
     validates :user_id, {presence: true}
     validates :content, {presence: true}
+    
+    # addressカラムを基準に緯度経度を算出
+    geocoded_by :address
+    # 住所変更時に緯度経度も変更する
+    after_validation :geocode, if: :address_changed?
+
 end
