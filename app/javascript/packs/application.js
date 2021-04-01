@@ -10,6 +10,7 @@ require("channels")
 
 // jQueryとBootstapのJSを使えるように
 import 'bootstrap';
+import { getJSON } from 'jquery';
 import '../stylesheets/application';
 
 

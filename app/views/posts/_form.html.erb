@@ -24,6 +24,11 @@
         <%= form.file_field :images, direct_upload: true, multiple: true %> <%# multiple: true で複数画像を投稿できるようにしている %>
       </div>
 
+      <div class="field">
+        <%= form.label :住所 %>
+        <%= form.text_field :address %>
+      </div>
+
       <div class="actions">
         <%= form.submit %>
       </div>

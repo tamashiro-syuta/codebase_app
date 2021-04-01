@@ -19,6 +19,48 @@
       <% end %>
     </div>
 
+    <%# ここに地図を表示 %>
+    <%# googlemapのAPI %>
+    <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBPVimg_SGJtbTDi27pUI7x_r8gmPwIE1g&callback=initMap">
+    </script>
+    <div class="map">
+      <div id="map"></div>
+      <style>
+        #map {
+          height: 450px;
+          width: 450px;
+        }
+      </style>
+      <script>
+        // googlemapの処理
+        let map
+
+        function initMap() {
+            let geocoder = new google.maps.Geocoder()
+
+            // googlemapのAPIを用いてmapのインスタンスを生成
+            map = new google.maps.Map(document.getElementById('map'), {
+                //   centerで初期位置の緯度経度を示してる。（latが緯度、lngが経度）
+                center: {
+                    lat: gon.post.latitude ,
+                    lng: gon.post.longitude
+                },
+                // zoomは表示領域の大きさ（０〜２１まである）
+                zoom: 12,
+            });
+            //  positionに指定した座標にピンを表示させます
+            marker = new google.maps.Marker({
+                position: {
+                    lat: gon.post.latitude ,
+                    lng: gon.post.longitude
+                },
+                map: map
+            });
+        }
+
+      </script>
+    </div>
+
     <div class="p-3">
       <% if @post.user_id == current_user.id %>
         <%= link_to '編集', edit_post_path(@post) %> |

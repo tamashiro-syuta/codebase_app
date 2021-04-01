@@ -9,22 +9,24 @@ class PostsController < ApplicationController
   # GET /posts/1 or /posts/1.json
   def show
   end
-
+  
   # GET /posts/new
   def new
     @post = Post.new
   end
-
+  
   # GET /posts/1/edit
   def edit
   end
-
+  
   # POST /posts or /posts.json
   def create
     @post = Post.new(post_params)
     # user_idの情報はフォームからはきていないので、deviseのメソッドを使って「ログインしている自分のid」を代入
     @post.user_id = current_user.id
-
+    @post.latitude = Geocoder.search(@post.address).first
+    @post.longitude = Geocoder.search(@post.address).last
+    
     respond_to do |format|
       if @post.save
         format.html { redirect_to @post, notice: "投稿しました." }
@@ -35,7 +37,7 @@ class PostsController < ApplicationController
       end
     end
   end
-
+  
   # PATCH/PUT /posts/1 or /posts/1.json
   def update
     respond_to do |format|
@@ -48,7 +50,7 @@ class PostsController < ApplicationController
       end
     end
   end
-
+  
   # DELETE /posts/1 or /posts/1.json
   def destroy
     @post.destroy
@@ -57,20 +59,16 @@ class PostsController < ApplicationController
       format.json { head :no_content }
     end
   end
-
+  
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_post
-      @post = Post.find(params[:id])
-    end
-
-    # 受け取るparamsは、contentのみ
-    def post_params
-      params.require(:post).permit(:content, images: []) # []をつけることで複数の画像データが入ることができる配列型のデータになる
-    end
-
-    # private
-    # def post_params
-    #   params.require(:post).permit(:body) # tweetモデルのカラムのみを許可
-    # end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_post
+    @post = Post.find(params[:id])
+    gon.post = @post
+  end
+  
+  # 受け取るparamsは、content,images[],addressのみ
+  def post_params
+    params.require(:post).permit(:content, :address, :latitude, :longitude, images: []) # []をつけることで複数の画像データが入ることができる配列型のデータになる
+  end
 end
