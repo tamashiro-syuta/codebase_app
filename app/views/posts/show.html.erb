@@ -42,8 +42,8 @@
             map = new google.maps.Map(document.getElementById('map'), {
                 //   centerで初期位置の緯度経度を示してる。（latが緯度、lngが経度）
                 center: {
-                    lat: 26.123542,   //gon.post.latitude ,
-                    lng: 127.665856             //gon.post.longitude
+                    lat: gon.post.latitude ,
+                    lng: gon.post.longitude
                 },
                 // zoomは表示領域の大きさ（０〜２１まである）
                 zoom: 12,
@@ -51,8 +51,8 @@
             //  positionに指定した座標にピンを表示させます
             marker = new google.maps.Marker({
                 position: {
-                    lat: 26.123542,  //gon.post.latitude ,
-                    lng: 127.665856  //gon.post.longitude
+                    lat: gon.post.latitude ,
+                    lng: gon.post.longitude
                 },
                 map: map
             });

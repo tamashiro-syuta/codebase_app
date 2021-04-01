@@ -27,9 +27,11 @@ class PostsController < ApplicationController
     @post.user_id = current_user.id
     @post.latitude = Geocoder.search(@post.address).first
     @post.longitude = Geocoder.search(@post.address).last
+    kentyou = Geocoder.search("沖縄県庁")
     
     respond_to do |format|
       if @post.save
+        binding.irb
         format.html { redirect_to @post, notice: "投稿しました." }
         format.json { render :show, status: :created, location: @post }
       else
