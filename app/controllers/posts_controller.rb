@@ -65,6 +65,7 @@ class PostsController < ApplicationController
   def set_post
     @post = Post.find(params[:id])
     gon.post = @post
+    gon.image = @post.images.first
   end
   
   # 受け取るparamsは、content,images[],addressのみ

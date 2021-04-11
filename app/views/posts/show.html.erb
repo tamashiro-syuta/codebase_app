@@ -12,11 +12,13 @@
       <%= @post.content %>
     </h2>
 
-    <div class="image p-3">
-      <% # 投稿の画像をサイズ変更して表示 %>
-      <% @post.images.each do |image| %>
+    <div class="previews container">
+      <div class="slider p-3">
+        <% # 投稿の画像をサイズ変更して表示 %>
+        <% @post.images.each do |image| %>
         <%= image_tag image.variant(resize: '350x350') %>
-      <% end %>
+        <% end %>
+      </div>
     </div>
 
     <%# ここに地図を表示 %>
@@ -70,4 +72,3 @@
     </div>
   </div>
 </div>
-
