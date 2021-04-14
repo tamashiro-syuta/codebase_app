@@ -127,22 +127,32 @@ textarea {
 // ーーーーーーーーーー s l i d e ーーーーーーーーーーーー
 
 .slider {
-  height: 80%;
-  width: 80%;
+  height: 90%;
+  width: 90%;
 }
 
 .fa-arrow-alt-circle-left {
-  font-size: 40px;
+  font-size: 30px;
   position: absolute;
   z-index: 100;
-  left: -100px;
+  left: -25px;
   top: 50%;
 }
 
 .fa-arrow-alt-circle-right {
-  font-size: 40px;
+  font-size: 30px;
   position: absolute;
   z-index: 100;
-  right: -100px;
+  right: -25px;
   top: 50%;
+}
+
+.post-option {
+  height: 55px;
+}
+
+// ーーーーーーーーーーーー m a p ーーーーーーーーーーーーーーー
+#map {
+  height: 100%;
+  width: 100%;
 }
