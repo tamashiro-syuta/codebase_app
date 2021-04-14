@@ -4,7 +4,6 @@
 
     <h2 class="p-2 col-8 text-left border-bottom">
       <%= @post.user_id.to_s + " さん" %>
-      <%=  %>
     </h2>
 
     <div class="post-option p-3 col-4 text-right d-flex align-items-end flex-row-reverse border-bottom">
@@ -29,7 +28,7 @@
     <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBPVimg_SGJtbTDi27pUI7x_r8gmPwIE1g&callback=initMap">
     </script>
     <div class="map col-5">
-      <div id="map"></div>
+      <div id="map" class="g-map"></div>
       <script>
         // googlemapの処理
         let map

@@ -4,3 +4,73 @@
         <p>ユーザー用ページです。</p>
     </div>
 </div>
+
+<%# 同じスクリプトタグを読み込むことになるのでeach文の外に記述 %>
+<script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBPVimg_SGJtbTDi27pUI7x_r8gmPwIE1g&callback=initMap"></script>
+<% @current_user_post.each do |post| %>
+<div class="container">
+    <div class="text-center row border my-5">
+        <p id="notice" class="col-12"><%= notice %></p>
+
+        <h2 class="p-2 col-8 text-left border-bottom">
+            <%= post.user_id.to_s + " さん" %>
+        </h2>
+
+        <div class="post-option p-3 col-4 text-right d-flex align-items-end flex-row-reverse border-bottom">
+            <% if post.user_id == current_user.id %>
+                <%= link_to '編集', edit_post_path(post) %> |
+                <%= link_to '削除', post, method: :delete, data: { confirm: '本当に削除してよろしいですか?' } %> |
+            <% end %>
+                <%= link_to '戻る', posts_path %>
+        </div>
+
+        <div class="previews container col-7">
+            <div class="slider p-3 mx-auto">
+                <% # 投稿の画像をサイズ変更して表示 %>
+                <% post.images.each do |image| %>
+                <%= image_tag image.variant(resize: '350x350') %>
+                <% end %>
+            </div>
+        </div>
+
+        <%# ここに地図を表示 %>
+        <%# googlemapのAPI %>
+        <div class="map col-5">
+            <div id= <%= post.id.to_s %> class="g-map"></div>
+            <script>
+            // googlemapの処理
+            let map
+
+            function initMap() {
+                let geocoder = new google.maps.Geocoder()
+
+                // googlemapのAPIを用いてmapのインスタンスを生成
+                map = new google.maps.Map(document.getElementById( '<%= post.id.to_s %>' ), {
+                    //   centerで初期位置の緯度経度を示してる。（latが緯度、lngが経度）
+                    center: {
+                        lat: <%= post.latitude %> ,
+                        lng: <%= post.longitude %>
+                    },
+                    // zoomは表示領域の大きさ（０〜２１まである）
+                    zoom: 12,
+                });
+                //  positionに指定した座標にピンを表示させます
+                marker = new google.maps.Marker({
+                    position: {
+                        lat: <%= post.latitude %>  ,
+                        lng: <%= post.longitude %>
+                    },
+                    map: map
+                });
+            }
+
+        </script>
+        </div>
+
+        <h2 class="pt-2 col-12 text-left border-top mt-3">
+            <%= post.content %>
+        </h2>
+
+    </div>
+</div>
+<% end %>
