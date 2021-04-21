@@ -1,36 +1,34 @@
 <div class="container">
-  <div class="text-center">
-    <p id="notice"><%= notice %></p>
+  <div class="text-center row border my-5">
+    <p id="notice" class="col-12"><%= notice %></p>
 
-    <h2 class="p-3">
-      <strong>ユーザー:</strong>
-      <%= @post.user_id %>
+    <h2 class="p-2 col-8 text-left border-bottom">
+      <%= @post.user_id.to_s + " さん" %>
     </h2>
 
-    <h2 class="p-3">
-      <strong>内容:</strong>
-      <%= @post.content %>
-    </h2>
-
-    <div class="image p-3">
-      <% # 投稿の画像をサイズ変更して表示 %>
-      <% @post.images.each do |image| %>
-        <%= image_tag image.variant(resize: '350x350') %>
+    <div class="post-option p-3 col-4 text-right d-flex align-items-end flex-row-reverse border-bottom">
+      <% if @post.user_id == current_user.id %>
+        <%= link_to '編集', edit_post_path(@post) %> |
+        <%= link_to '削除', @post, method: :delete, data: { confirm: '本当に削除してよろしいですか?' } %> |
       <% end %>
+        <%= link_to '戻る', posts_path %>
+    </div>
+
+    <div class="previews container col-7">
+      <div class="slider p-3 mx-auto">
+        <% # 投稿の画像をサイズ変更して表示 %>
+        <% @post.images.each do |image| %>
+        <%= image_tag image.variant(resize: '350x350') %>
+        <% end %>
+      </div>
     </div>
 
     <%# ここに地図を表示 %>
     <%# googlemapのAPI %>
     <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBPVimg_SGJtbTDi27pUI7x_r8gmPwIE1g&callback=initMap">
     </script>
-    <div class="map">
-      <div id="map"></div>
-      <style>
-        #map {
-          height: 450px;
-          width: 450px;
-        }
-      </style>
+    <div class="map col-5">
+      <div id="map" class="g-map"></div>
       <script>
         // googlemapの処理
         let map
@@ -61,13 +59,9 @@
       </script>
     </div>
 
-    <div class="p-3">
-      <% if @post.user_id == current_user.id %>
-        <%= link_to '編集', edit_post_path(@post) %> |
-        <%= link_to '削除', @post, method: :delete, data: { confirm: '本当に削除してよろしいですか?' } %> |
-      <% end %>
-        <%= link_to '戻る', posts_path %>
-    </div>
+    <h2 class="pt-2 col-12 text-left border-top mt-3">
+      <%= @post.content %>
+    </h2>
+
   </div>
 </div>
-

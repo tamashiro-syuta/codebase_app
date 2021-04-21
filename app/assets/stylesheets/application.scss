@@ -1,0 +1,158 @@
+// application.scssの冒頭に以下の記述を追記
+$fa-font-path: "@fortawesome/fontawesome-free/webfonts";
+@import "@fortawesome/fontawesome-free/scss/fontawesome";
+@import "@fortawesome/fontawesome-free/scss/solid";
+@import "@fortawesome/fontawesome-free/scss/regular";
+@import "@fortawesome/fontawesome-free/scss/brands";
+@import "@fortawesome/fontawesome-free/scss/v4-shims";
+
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+@import "slick-theme";
+@import "slick";
+
+/* ーーーーーーーーーーーーーーーーーーーーー　ベース部分　ーーーーーーーーーーーーーーーーーーーーーーーーーーー */
+* {
+  box-sizing: border-box;
+  color: #3e1300;
+}
+body {
+  background-color: #d1cbc3;
+}
+
+main {
+  background-color: #d1cbc3;
+}
+#header {
+  transition: all 0.5s;
+  z-index: 997;
+  transition: all 0.5s;
+  padding: 10px 0;
+  background: rgba(230, 91, 32, 0.9);
+  box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.12);
+}
+
+#header .logo h1 {
+  font-size: 26px;
+  margin: 0;
+  padding: 6px 0;
+  line-height: 1;
+  font-weight: 500;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+#header .logo h1 a,
+#header .logo h1 a:hover {
+  color: #2c4964;
+  text-decoration: none;
+}
+
+#header .logo img {
+  padding: 0;
+  margin: 0;
+  max-height: 40px;
+}
+
+/* ーーーーーーーーーー　ボ　タ　ン　ーーーーーーーーーー */
+.btn-orange {
+  background: #f7f4f2;
+  color: #f7f4f2;
+  border: #3e1300 solid 1px;
+}
+
+.btn-orange:hover,
+.btn-orange:focus,
+.btn-orange:active,
+.btn-orange:active:focus,
+.btn-orange:active:hover,
+.btn-orange:active.focus,
+.btn-orange.active,
+.btn-orange.active:focus,
+.btn-orange.active:hover,
+.btn-orange.active.focus,
+.open > .dropdown-toggle.btn-orange,
+.open > .dropdown-toggle.btn-orange:hover,
+.open > .dropdown-toggle.btn-orange:focus,
+.open > .dropdown-toggle.btn-orange.focus,
+.btn-orange.disabled:hover,
+.btn-orange[disabled]:hover,
+fieldset[disabled] .btn-orange:hover,
+.btn-orange.disabled:focus,
+.btn-orange[disabled]:focus,
+fieldset[disabled] .btn-orange:focus,
+.btn-orange.disabled.focus,
+.btn-orange[disabled].focus,
+fieldset[disabled] .btn-orange.focus {
+  background: #d1cbc3;
+  color: #f7f4f2;
+}
+
+.btn-orange.outline {
+  border: 5px solid black;
+  color: #e65b20;
+}
+
+/* flash部分 */
+.flash {
+  width: 95%;
+  color: #3e1300;
+  background-color: #d1cbc3;
+  border: #3e1300 solid 2px;
+  border-radius: 20px;
+}
+
+.fas:hover {
+  color: #e65b20;
+}
+
+textarea {
+  width: 50%;
+}
+
+// ーーーーーーーーーー s l i d e ーーーーーーーーーーーー
+
+.slider {
+  height: 90%;
+  width: 90%;
+}
+
+.fa-arrow-alt-circle-left {
+  font-size: 30px;
+  position: absolute;
+  z-index: 100;
+  left: -25px;
+  top: 50%;
+}
+
+.fa-arrow-alt-circle-right {
+  font-size: 30px;
+  position: absolute;
+  z-index: 100;
+  right: -25px;
+  top: 50%;
+}
+
+.post-option {
+  height: 55px;
+}
+
+// ーーーーーーーーーーーー m a p ーーーーーーーーーーーーーーー
+.g-map {
+  height: 100%;
+  width: 100%;
+}
