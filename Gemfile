@@ -64,3 +64,7 @@ gem 'geocoder'
 
 # 画像サイズ変更
 gem 'mini_magick'
+
+# deviseの日本語登録
+gem 'devise-i18n'
+gem 'devise-i18n-views'
